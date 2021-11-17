@@ -15,17 +15,31 @@
           </p>
         </div>
       </div>
+
+      <div class="row" v-if="avatar">
+        <div class="col pt-5">
+          <figure>
+            <img class='avatar' :src=avatar>
+            <figcaption>First avatar from Get Trending Feed</figcaption>
+          </figure>
+        </div>
+      </div>
+
     </section>
 
     <section id="msg">
       <div class="row" v-if="loading">
-        <div class="col text-danger blink">{{ loading }}</div>
+        <div class="col text-danger blink"><h2>{{ loading }}</h2></div>
       </div>
     </section>
 
     <article>
-      <div class="row news" v-for="post in user" :key="post">
-        <div class="col-lg-4 text-start">
+      <div class="row news " v-for="post in user" :key="post">
+        <hr/>
+        <div class="col-lg-4 col-sm-6 lg-text-start">
+          <p>
+            <strong><i class="bi bi-play-circle"></i> {{post.playCount}}</strong>
+          </p>
           <p>
             <i class="bi bi-emoji-heart-eyes"></i>️ {{post.diggCount }}
           </p>
@@ -36,13 +50,13 @@
             <i class="bi bi-share"></i> {{post.shareCount}}
           </p>
           <p>
-            <i class="bi bi-play-circle"></i> {{post.playCount}}
+            {{post.text}}
           </p>
         </div>
 
 
-        <div class="col-lg-8">
-          <player :poster="post.covers.dynamic" :video="post.videoUrl"></player>
+        <div class="col-lg-8 col-sm-6">
+          <player :poster="post.covers.default" :video="post.videoUrl" :width="300"></player>
         </div>
       </div>
     </article>
@@ -65,7 +79,8 @@ export default {
   data() {
     return {
       idUser: this.$route.params.id,
-      api: false,
+      api: true,
+      avatar: '',
       user: '',
       loading: '',
     }
@@ -95,7 +110,7 @@ export default {
         console.error(error);
       });
 
-
+      this.avatar  = this.user[0].authorMeta.avatar
       this.loading = ''
 
     },
@@ -108,6 +123,7 @@ export default {
 
   mounted() {
     this.api ? this.getUserAPI() : this.getUserJson();
+
   },
 }
 

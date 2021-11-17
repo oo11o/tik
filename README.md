@@ -6,8 +6,9 @@ vue
 bootstrap
 ```
 
+Предполагаемая схема:
 
-
+![Screenshot](shema.jpg)
 ## Project setup
 ```
 npm install
