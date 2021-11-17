@@ -6,7 +6,7 @@ vue
 bootstrap
 ```
 
-Предполагалась изночально такая схема:
+Предполагалась изначально такая схема:
 
 ![Screenshot](shema.jpg)
 ## Project setup
