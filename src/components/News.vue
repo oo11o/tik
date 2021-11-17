@@ -27,12 +27,12 @@
 
         <article>
             <div class="row news" v-for="item  in news" :key="item">
-                <div class="lg-text-start">
+                <div class="text-md-start">
                     <h2>{{ item.authorMeta.nickName }}</h2>
-                    <hr class="d-md-none">
+                    <hr>
                 </div>
 
-                <div class="col-lg-6 lg-text-start">
+                <div class="col-lg-6 text-md-start">
                     <p><a :href="'user/'+item.authorMeta.name">{{ item.authorMeta.name }}</a></p>
                     <p>
                         <a :href="'user/'+item.authorMeta.name">
